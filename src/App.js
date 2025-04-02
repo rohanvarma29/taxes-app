@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { AppProvider } from './context/AppContext';
+import Wizard from './components/Wizard';
+import './styles/Forms.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider>
+      <div className="app-container">
+        <h1 className="app-title">Welcome to Smart Salary Navigator</h1>
+        <p className="app-subtitle">Calculate your ideal salary range in minutes</p>
+        <Wizard />
+      </div>
+    </AppProvider>
   );
-}
+};
 
 export default App;
