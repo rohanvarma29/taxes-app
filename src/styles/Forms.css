@@ -87,6 +87,48 @@ button[type="submit"]:hover {
   padding: 0 20px;
 }
 
+.success-message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.success-content {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.success-content h2 {
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+
+.success-content p {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.success-content .primary-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.success-content .primary-button:hover {
+  background-color: #0056b3;
+}
+
 button[type="button"] {
   background-color: #f8fafc;
   color: #475569;

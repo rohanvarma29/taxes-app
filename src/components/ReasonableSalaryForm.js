@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
-const ReasonableSalaryForm = ({ onBack, onReset }) => {
+const ReasonableSalaryForm = ({ onBack, onNext }) => {
   const { updateFormData, submitToWeb3Forms, submissionResult } = useContext(AppContext);
   const [form, setForm] = useState({ salary: '' });
   const [errors, setErrors] = useState({});
@@ -28,12 +28,16 @@ const ReasonableSalaryForm = ({ onBack, onReset }) => {
     e.preventDefault();
     const newErrors = validateForm();
     if (Object.keys(newErrors).length === 0) {
-      updateFormData('reasonableSalary', form);
-      const submitted = await submitToWeb3Forms();
-      if (submitted) {
-        setIsSubmitted(true);
-        onReset(); // Reset to first step after successful submission
+      try {
+        updateFormData({ reasonableSalary: form.salary });
+        const success = await submitToWeb3Forms();
+        if (success) {
+          onNext();
+        }
+      } catch (error) {
+        setErrors({ submit: 'Failed to submit the form. Please try again.' });
       }
+      setIsSubmitted(true);
     } else {
       setErrors(newErrors);
     }
